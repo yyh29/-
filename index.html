@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<title>石头剪刀布</title>
-</head>
-<body>
-<h1>来玩几把紧张刺激的石头剪刀布吧！</h1>
-<button onclick="displayWord()">石头剪刀布</button>
-<script>
-  function displayWord(){document.getElementById("demo").innerHTML=("石头");}
-</script>
-<p id="demo"></p>
-</body>
+  <head>
+    <title>石头剪刀布</title>
+    <script type="text/javascript">
+      function randomChoice() {
+        var choices = ["石头", "剪刀", "布"];
+        var choice = choices[Math.floor(Math.random() * choices.length)];
+        document.getElementById("result").innerHTML = choice;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>来玩几把紧张刺激的石头剪刀布吧！</h1>
+    <p>大喊一声你要出的招式！然后点击下面的按钮让对手出招！</p>
+    <button onclick="randomChoice()">对手出招！</button>
+    <p id="result"></p>
+  </body>
+</html>
 </html>
