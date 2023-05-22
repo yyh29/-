@@ -1,21 +1,51 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>石头剪刀布</title>
-    <meta charset="utf-8">
-    <script type="text/javascript">
-      function randomChoice() {
-        var choices = ["石头", "剪刀", "布"];
-        var choice = choices[Math.floor(Math.random() * choices.length)];
-        document.getElementById("result").innerHTML = choice;
-      }
-    </script>
-  </head>
-  <body>
-    <h1>来玩几把紧张刺激的石头剪刀布吧！</h1>
-    <p>大喊一声你要出的招式！然后点击下面的按钮让对手出招！</p>
-    <button onclick="randomChoice()">对手出招！</button>
-    <p id="result"></p>
-  </body>
-</html>
+<head>
+	<title>石头剪刀布游戏</title>
+	<meta charset="UTF-8">
+	<script type="text/javascript">
+		var playerScore = 0;
+		var computerScore = 0;
+
+		function playGame(playerChoice) {
+			var computerChoice = Math.floor(Math.random() * 3);
+			if (computerChoice == 0) {
+				computerChoice = "石头";
+			} else if (computerChoice == 1) {
+				computerChoice = "剪刀";
+			} else {
+				computerChoice = "布";
+			}
+
+			var result = "";
+			if (playerChoice == computerChoice) {
+				result = "平局";
+			} else if ((playerChoice == "石头" && computerChoice == "剪刀") || (playerChoice == "剪刀" && computerChoice == "布") || (playerChoice == "布" && computerChoice == "石头")) {
+				result = "玩家胜利";
+				playerScore++;
+			} else {
+				result = "电脑胜利";
+				computerScore++;
+			}
+
+			document.getElementById("player-score").innerHTML = playerScore;
+			document.getElementById("computer-score").innerHTML = computerScore;
+			document.getElementById("result").innerHTML = result;
+			document.getElementById("computer-choice").innerHTML = computerChoice;
+		}
+	</script>
+</head>
+<body>
+	<h1>石头剪刀布游戏</h1>
+	<button onclick="playGame('石头')">石头</button>
+	<button onclick="playGame('剪刀')">剪刀</button>
+	<button onclick="playGame('布')">布</button>
+	<br><br>
+	<button onclick="playGame()">电脑出招</button>
+	<div id="computer-choice"></div>
+	<div id="result"></div>
+	<h2>排行榜</h2>
+	<p>玩家得分：<span id="player-score">0</span></p>
+	<p>电脑得分：<span id="computer-score">0</span></p>
+</body>
 </html>
