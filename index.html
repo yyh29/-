@@ -10,7 +10,7 @@
 
 		function choose(choice) {
 			playerChoice = choice;
-			document.getElementById("player-choice").innerHTML = "对付雌小鬼，你决定使出：" + playerChoice;
+			document.getElementById("player-choice").innerHTML = "对付雌小鬼，你决定使出" + playerChoice;
 		}
 
 		function computerChoose() {
@@ -24,7 +24,7 @@
 			if (playerChoice == computerChoice) {
 				document.getElementById("result").innerHTML = "啊呀啊呀♥︎笨蛋大叔居然变聪明了呢♥︎";
 			} else if ((playerChoice == "石头" && computerChoice == "剪刀") || (playerChoice == "剪刀" && computerChoice == "布") || (playerChoice == "布" && computerChoice == "石头")) {
-				document.getElementById("result").innerHTML = "哼，让你明白我的厉害！";
+				document.getElementById("result").innerHTML = "哼，我也不是好捉弄的啊！";
 				playerScore++;
 				document.getElementById("player-score").innerHTML = playerScore;
 			} else {
@@ -41,12 +41,12 @@
 	<button onclick="choose('剪刀')">剪刀</button>
 	<button onclick="choose('布')">布</button>
 	<h2 id="player-choice"></h2>
-	<button onclick="computerChoose()">电脑出招！</button>
+	<button onclick="computerChoose()">大叔不会是想做什么色色的事情吧♥︎</button>
 	<h2 id="computer-choice"></h2>
 	<h3 id="result"></h3>
 	<div style="float: right;">
-		<p>玩家得分：<span id="player-score">0</span></p>
-		<p>电脑得分：<span id="computer-score">0</span></p>
+		<p>笨蛋大叔被捉弄次数：<span id="player-score">0</span></p>
+		<p>雌小鬼被调教次数：<span id="computer-score">0</span></p>
 	</div>
 </body>
 </html>
