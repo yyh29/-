@@ -1,51 +1,66 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>石头剪刀布游戏</title>
-	<meta charset="UTF-8">
-	<script type="text/javascript">
-		var playerScore = 0;
-		var computerScore = 0;
-
-		function playGame(playerChoice) {
-			var computerChoice = Math.floor(Math.random() * 3);
-			if (computerChoice == 0) {
-				computerChoice = "石头";
-			} else if (computerChoice == 1) {
-				computerChoice = "剪刀";
-			} else {
-				computerChoice = "布";
-			}
-
-			var result = "";
-			if (playerChoice == computerChoice) {
-				result = "平局";
-			} else if ((playerChoice == "石头" && computerChoice == "剪刀") || (playerChoice == "剪刀" && computerChoice == "布") || (playerChoice == "布" && computerChoice == "石头")) {
-				result = "玩家胜利";
-				playerScore++;
-			} else {
-				result = "电脑胜利";
-				computerScore++;
-			}
-
-			document.getElementById("player-score").innerHTML = playerScore;
-			document.getElementById("computer-score").innerHTML = computerScore;
-			document.getElementById("result").innerHTML = result;
-			document.getElementById("computer-choice").innerHTML = computerChoice;
-		}
-	</script>
+	<title>石头剪刀布</title>
 </head>
 <body>
-	<h1>石头剪刀布游戏</h1>
-	<button onclick="playGame('石头')">石头</button>
-	<button onclick="playGame('剪刀')">剪刀</button>
-	<button onclick="playGame('布')">布</button>
-	<br><br>
-	<button onclick="playGame()">电脑出招</button>
-	<div id="computer-choice"></div>
-	<div id="result"></div>
-	<h2>排行榜</h2>
-	<p>玩家得分：<span id="player-score">0</span></p>
-	<p>电脑得分：<span id="computer-score">0</span></p>
+	<h1>石头剪刀布！</h1>
+	<div>
+		<button id="rock">石头</button>
+		<button id="scissors">剪刀</button>
+		<button id="paper">布</button>
+	</div>
+	<p>你选择了：<span id="player"></span></p>
+	<button id="computer">电脑出招</button>
+	<p>电脑选择了：<span id="pc"></span></p>
+	<p>本回合胜者是：<span id="winner"></span></p>
+	<div>
+		<h2>排行榜</h2>
+		<p>玩家分数：<span id="playerScore">0</span></p>
+		<p>电脑分数：<span id="pcScore">0</span></p>
+	</div>
+
+	<script type="text/javascript">
+		var playerScore = 0;
+		var pcScore = 0;
+
+		function play(playerChoice) {
+			document.getElementById("player").innerHTML = playerChoice;
+			var choices = ["石头", "剪刀", "布"];
+			var pcChoice = choices[Math.floor(Math.random() * 3)];
+			document.getElementById("pc").innerHTML = pcChoice;
+			var winner = "";
+			if (playerChoice == pcChoice) {
+				winner = "平局";
+			} else if ((playerChoice == "石头" && pcChoice == "剪刀") || 
+						(playerChoice == "剪刀" && pcChoice == "布") || 
+						(playerChoice == "布" && pcChoice == "石头")) {
+				winner = "玩家胜利";
+				playerScore++;
+			} else {
+				winner = "电脑胜利";
+				pcScore++;
+			}
+			document.getElementById("winner").innerHTML = winner;
+			document.getElementById("playerScore").innerHTML = playerScore;
+			document.getElementById("pcScore").innerHTML = pcScore;
+		}
+
+		document.getElementById("rock").addEventListener("click", function() {
+			play("石头");
+		});
+
+		document.getElementById("scissors").addEventListener("click", function() {
+			play("剪刀");
+		});
+
+		document.getElementById("paper").addEventListener("click", function() {
+			play("布");
+		});
+
+		document.getElementById("computer").addEventListener("click", function() {
+			play(document.getElementById("player").innerHTML);
+		});
+	</script>
 </body>
 </html>
