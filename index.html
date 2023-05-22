@@ -16,19 +16,19 @@
 		function computerChoose() {
 			var choices = ["石头", "剪刀", "布"];
 			computerChoice = choices[Math.floor(Math.random() * 3)];
-			document.getElementById("computer-choice").innerHTML = "电脑选择了：" + computerChoice;
+			document.getElementById("computer-choice").innerHTML = "笨蛋大叔♥︎让你见识见识我的" + computerChoice;
 			checkWinner();
 		}
 
 		function checkWinner() {
 			if (playerChoice == computerChoice) {
-				document.getElementById("result").innerHTML = "平局！";
+				document.getElementById("result").innerHTML = "啊呀啊呀♥︎笨蛋大叔居然变聪明了呢♥︎";
 			} else if ((playerChoice == "石头" && computerChoice == "剪刀") || (playerChoice == "剪刀" && computerChoice == "布") || (playerChoice == "布" && computerChoice == "石头")) {
-				document.getElementById("result").innerHTML = "你赢了！";
+				document.getElementById("result").innerHTML = "哼，让你明白我的厉害！";
 				playerScore++;
 				document.getElementById("player-score").innerHTML = playerScore;
 			} else {
-				document.getElementById("result").innerHTML = "电脑赢了！";
+				document.getElementById("result").innerHTML = "杂鱼♥杂鱼♥果然笨蛋大叔还是这么好捉弄呢♥︎";
 				computerScore++;
 				document.getElementById("computer-score").innerHTML = computerScore;
 			}
